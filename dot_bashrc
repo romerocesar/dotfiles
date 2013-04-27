@@ -1,0 +1,4 @@
+# generic things come from .profile
+source ~/.profile
+source ~/.alias
+source ~/.functions
