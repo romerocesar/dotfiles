@@ -1,2 +1,9 @@
-alias ls='ls -FG'
+# simple commands
+alias ls='ls -F'
+alias la='ls -a'
+alias ll='ls -la'
 alias edit='emacs -nw'
+
+# useful shortcuts
+alias aliases="edit ~/.alias && source ~/.alias"
+alias functions="edit ~/.function && source ~/.function"

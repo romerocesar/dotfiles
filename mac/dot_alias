@@ -1,0 +1,2 @@
+# MAC specific aliases
+alias ls="ls -FG"

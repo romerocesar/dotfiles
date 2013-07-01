@@ -1,0 +1,14 @@
+# this directory
+MAC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# first load generic dot bashrc file from parent dir
+MAC_PARENT="$(dirname "${MAC_DIR}")"
+source $PARENT/dot_bashrc
+
+# assume bash for now and load decent bashrc and aliases
+echo "loading dot files found in ${MAC_DIR}"
+source $MAC_DIR/dot_bashrc
+source $MAC_DIR/dot_alias
+
+# env variables
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH

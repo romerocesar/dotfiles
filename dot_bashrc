@@ -1,6 +1,9 @@
-# include other files
-source dot_alias
-source dot_functions
+# where is this file?
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# include other files relative to this file
+source $DIR/dot_alias
+source $DIR/dot_functions
 
 # variables
 export EBHOME=~/src/ebcli/AWS-ElasticBeanstalk-CLI-2.4.0/eb/macosx/python3

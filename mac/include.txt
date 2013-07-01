@@ -1,0 +1,5 @@
+~/.profile
+~/.bashrc
+~/.bash_profile
+~/.alias
+~/.function
