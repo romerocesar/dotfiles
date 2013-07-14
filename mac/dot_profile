@@ -3,7 +3,7 @@ MAC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # first load generic dot bashrc file from parent dir
 MAC_PARENT="$(dirname "${MAC_DIR}")"
-source $PARENT/dot_bashrc
+source $MAC_PARENT/dot_bashrc
 
 # assume bash for now and load decent bashrc and aliases
 echo "loading dot files found in ${MAC_DIR}"
