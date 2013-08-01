@@ -1,0 +1,9 @@
+[user]
+	name = cesar
+	email = cesar@romero.ws
+[color]
+	ui = auto
+[alias]
+	log = log --graph --abbrev-commit --decorate
+	lg = log --graph --abbrev-commit --decorate
+	oneline = log --graph --abbrev-commit --decorate --pretty=oneline
