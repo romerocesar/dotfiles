@@ -1,0 +1,7 @@
+;; key bindings
+;; buffers
+(windmove-default-keybindings)
+;; grepping
+(global-set-key (kbd "C-x g g") 'grep)
+(global-set-key (kbd "C-x g l") 'lgrep)
+(global-set-key (kbd "C-x g r") 'rgrep)
