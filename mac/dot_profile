@@ -11,4 +11,5 @@ source $MAC_DIR/dot_bashrc
 source $MAC_DIR/dot_alias
 
 # env variables
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export PATH=$PATH:$JAVA_HOME/bin
