@@ -1,10 +1,11 @@
 ;;; This is my default .emacs file that sets up very little on its own
 ;;; as it assumes that prelude and emacs 24 are in use
 ;; variables
+(setq-default cursor-type 'bar)
+(setq projectile-completion-system 'grizzl)
 (setq projectile-enable-caching t)
 (setq whitespace-line-column 100)
 (setq whitespace-global-modes t)        ; automatically enable ws mode
-(setq-default cursor-type 'bar)
 ;; modes
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
