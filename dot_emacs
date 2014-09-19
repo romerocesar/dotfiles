@@ -5,13 +5,13 @@
 (setq whitespace-line-column 100)
 (setq-default cursor-type 'bar)
 ;; modes
-(tool-bar-mode nil)
+(tool-bar-mode 0)
 (scroll-bar-mode 0)
 ;; key bindings
 ;; buffers
 (windmove-default-keybindings)
 ;; grepping
-(global-set-key (kbd "C-x g g") 'grep)
-(global-set-key (kbd "C-x g l") 'lgrep)
-(global-set-key (kbd "C-x g r") 'rgrep)
+(global-set-key (kbd "C-x C-g g") 'grep)
+(global-set-key (kbd "C-x C-g l") 'lgrep)
+(global-set-key (kbd "C-x C-g r") 'rgrep)
 ;; dot_emacs ends here
