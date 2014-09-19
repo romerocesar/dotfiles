@@ -1,3 +1,8 @@
+;;; This is my default .emacs file that sets up very little on its own
+;;; as it assumes that prelude and emacs 24 are in use
+;; variables
+(setq projectile-enable-caching t)
+(setq whitespace-line-column 100)
 (setq-default cursor-type 'bar)
 ;; modes
 (tool-bar-mode nil)
@@ -9,4 +14,4 @@
 (global-set-key (kbd "C-x g g") 'grep)
 (global-set-key (kbd "C-x g l") 'lgrep)
 (global-set-key (kbd "C-x g r") 'rgrep)
-
+;; dot_emacs ends here
