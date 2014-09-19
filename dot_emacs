@@ -3,6 +3,7 @@
 ;; variables
 (setq projectile-enable-caching t)
 (setq whitespace-line-column 100)
+(setq whitespace-global-modes t)        ; automatically enable ws mode
 (setq-default cursor-type 'bar)
 ;; modes
 (tool-bar-mode 0)
