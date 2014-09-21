@@ -21,12 +21,14 @@
               (toggle-truncate-lines 1)
               (local-set-key "C-;" 'semantic-ia-complete-symbol))))
 ;; built-in modes
- (tool-bar-mode 0)
- (scroll-bar-mode 0)
- ;; key bindings
- ;; buffers
- (windmove-default-keybindings)
- ;; grepping
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+;; key bindings
+;; buffers
+(windmove-default-keybindings)
+(when (require 'switch-window nil 'noerror)
+  (global-set-key (kbd "C-x o") 'switch-window))
+;; grepping
 (global-set-key (kbd "C-x C-g g") 'grep)
 (global-set-key (kbd "C-x C-g l") 'lgrep)
 (global-set-key (kbd "C-x C-g r") 'rgrep)
