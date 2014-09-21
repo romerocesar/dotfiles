@@ -1,3 +1,1 @@
-# define mac specific stuff below
-export PATH=/opt/local/bin:$PATH
-# load other mac specific stuff from external files
+# define or load mac specific stuff below
