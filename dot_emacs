@@ -6,10 +6,13 @@
 (load-theme 'badger t)
 ;; variables
 (setq-default cursor-type 'bar)
+(setq prelude-flyspell nil)
 (setq projectile-completion-system 'grizzl)
 (setq projectile-enable-caching t)
 (setq whitespace-line-column 100)
 (setq whitespace-global-modes t)        ; automatically enable ws mode
+;; simple functions
+(toggle-truncate-lines t)
 ;; modes
 ;; malabar mode for Java. See https://github.com/m0smith/malabar-mode
 (when (require 'malabar-mode nil 'noerror)
