@@ -1,12 +1,38 @@
+;;; This is my default .emacs file that sets up very little on its own
+;;; as it expects emacs 24 with prelude being loaded via .emacs.d/init.el
+;; load prelude
+(load "~/.emacs.d/init.el")
+;; theme
+(load-theme 'badger t)
+;; variables
 (setq-default cursor-type 'bar)
+(setq prelude-flyspell nil)
+(setq projectile-completion-system 'grizzl)
+(setq projectile-enable-caching t)
+(setq whitespace-line-column 100)
+(setq whitespace-global-modes t)        ; automatically enable ws mode
+;; simple functions
+(toggle-truncate-lines t)
 ;; modes
-(tool-bar-mode nil)
+;; malabar mode for Java. See https://github.com/m0smith/malabar-mode
+(when (require 'malabar-mode nil 'noerror)
+  (add-to-list 'auto-mode-alist '("\\.java\\'" . malabar-mode))
+  (setq malabar-mode-key-prefix (kbd "C-c C-j"))
+  ;; truncate lines and add semantic code completion on '.' for malabar mode
+  (add-hook 'malabar-mode-hook
+            (lambda ()
+              (toggle-truncate-lines 1)
+              (local-set-key "C-;" 'semantic-ia-complete-symbol))))
+;; built-in modes
+(tool-bar-mode 0)
 (scroll-bar-mode 0)
 ;; key bindings
 ;; buffers
 (windmove-default-keybindings)
+(when (require 'switch-window nil 'noerror)
+  (global-set-key (kbd "C-x o") 'switch-window))
 ;; grepping
-(global-set-key (kbd "C-x g g") 'grep)
-(global-set-key (kbd "C-x g l") 'lgrep)
-(global-set-key (kbd "C-x g r") 'rgrep)
-
+(global-set-key (kbd "C-x C-g g") 'grep)
+(global-set-key (kbd "C-x C-g l") 'lgrep)
+(global-set-key (kbd "C-x C-g r") 'rgrep)
+;; dot_emacs ends here
