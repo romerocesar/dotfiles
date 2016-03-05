@@ -35,4 +35,6 @@
 (global-set-key (kbd "C-x C-g g") 'grep)
 (global-set-key (kbd "C-x C-g l") 'lgrep)
 (global-set-key (kbd "C-x C-g r") 'rgrep)
+;; better M-x completion
+(global-set-key (kbd "M-x") 'smex)
 ;; dot_emacs ends here
