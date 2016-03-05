@@ -3,7 +3,7 @@
 ;; load prelude
 (load "~/.emacs.d/init.el")
 ;; theme
-(load-theme 'badger t)
+(load-theme 'mustard t)
 ;; variables
 (setq-default cursor-type 'bar)
 (setq prelude-flyspell nil)
