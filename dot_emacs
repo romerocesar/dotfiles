@@ -1,7 +1,5 @@
 ;;; dot_emacs --- minimal
-
-;;; Commentary:
-
+;;; 
 ;;; This is my default .emacs file that sets up very little on its own
 ;;; as it expects emacs 24 with prelude being loaded via
 ;;; .emacs.d/init.el
@@ -31,6 +29,9 @@
             (lambda ()
               (toggle-truncate-lines 1)
               (local-set-key "C-;" 'semantic-ia-complete-symbol))))
+;; elpy-mode for .py files
+(when (require 'elpy-mode nil 'noerror)
+  (add-to-list 'auto-mode-alist '("\\.py\\'" . elpy-mode))
 ;; built-in modes
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
