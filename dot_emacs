@@ -30,8 +30,7 @@
               (toggle-truncate-lines 1)
               (local-set-key "C-;" 'semantic-ia-complete-symbol))))
 ;; elpy-mode for .py files
-(when (require 'elpy-mode nil 'noerror)
-  (add-to-list 'auto-mode-alist '("\\.py\\'" . elpy-mode))
+(add-to-list 'auto-mode-alist '("\\.py\\'" . elpy-mode))
 ;; built-in modes
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
