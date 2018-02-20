@@ -7,9 +7,10 @@
 ;;; Code:
 
 ;; load prelude
+;; (package-initialize)
 (load "~/.emacs.d/init.el")
 ;; theme
-(load-theme 'badger t)
+(load-theme 'monokai t)
 ;; variables
 (setq-default cursor-type 'bar)
 (setq prelude-flyspell nil)
@@ -17,7 +18,7 @@
 (setq projectile-enable-caching t)
 (set-default 'truncate-lines t)
 (setq truncate-partial-width-windows nil)
-(setq whitespace-line-column 100)
+(setq whitespace-line-column 99)
 (setq whitespace-global-modes t)        ; automatically enable ws mode
 ;; modes
 ;; malabar mode for Java. See https://github.com/m0smith/malabar-mode
@@ -30,7 +31,14 @@
               (toggle-truncate-lines 1)
               (local-set-key "C-;" 'semantic-ia-complete-symbol))))
 ;; elpy-mode for .py files
-(add-to-list 'auto-mode-alist '("\\.py\\'" . elpy-mode))
+(require 'elpy)
+(elpy-enable)
+(add-hook 'python-mode-hook
+          (lambda ()
+            (elpy-mode)
+            (flycheck-mode)
+            (setq flycheck-flake8-maximum-line-length 99)
+            (flymake-mode-off)))
 ;; built-in modes
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
