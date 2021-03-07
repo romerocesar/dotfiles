@@ -12,4 +12,4 @@ source $MAC_DIR/dot_alias
 
 # env variables
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export PATH=/usr/local/bin:$PATH:$JAVA_HOME/bin
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/local/opt/ruby/bin:$PATH:/Library/TeX/texbin:$JAVA_HOME/bin
