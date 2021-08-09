@@ -1,6 +1,11 @@
 # this directory
 MAC_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+# env variables first so brew is available going forward
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/sbin:/usr/local/bin:/usr/local/opt/ruby/bin:$PATH:/Library/TeX/texbin:$JAVA_HOME/bin
+
 # first load generic dot bashrc file from parent dir
 MAC_PARENT="$(dirname "${MAC_DIR}")"
 source $MAC_PARENT/dot_bashrc
@@ -10,6 +15,3 @@ echo "loading dot files found in ${MAC_DIR}"
 source $MAC_DIR/dot_bashrc
 source $MAC_DIR/dot_alias
 
-# env variables
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/local/opt/ruby/bin:$PATH:/Library/TeX/texbin:$JAVA_HOME/bin
