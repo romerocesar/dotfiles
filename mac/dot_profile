@@ -14,4 +14,3 @@ source $MAC_PARENT/dot_bashrc
 echo "loading dot files found in ${MAC_DIR}"
 source $MAC_DIR/dot_bashrc
 source $MAC_DIR/dot_alias
-

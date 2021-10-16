@@ -1,8 +1,8 @@
 ;;; dot_emacs --- minimal
-;;; 
+;;;
 ;;; This is my default .emacs file that sets up very little on its own
-;;; as it expects emacs 24 with prelude being loaded via
-;;; .emacs.d/init.el
+;;; as it expects emacs 25.1+ with prelude being loaded via
+;;; .emacs.d/init.el. Learn more at https://github.com/bbatsov/prelude
 
 ;;; Code:
 
@@ -36,6 +36,7 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (elpy-mode)
+            (setq elpy-rpc-python-command "python3")
             (flycheck-mode)
             (setq flycheck-flake8-maximum-line-length 99)
             (flymake-mode-off)))

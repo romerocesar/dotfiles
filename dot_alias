@@ -3,6 +3,8 @@ alias ls='ls -F --color'
 alias la='ls -a'
 alias ll='ls -la'
 alias edit='emacs -nw'
+alias k=kubectl
+alias watch='watch '
 
 # useful shortcuts
 alias aliases="edit ~/.alias && source ~/.alias"
