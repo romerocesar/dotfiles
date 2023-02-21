@@ -8,6 +8,6 @@ source $DIR/dot_functions
 # environment variables
 export ACK_OPTIONS="--smart-case"
 export EDITOR='emacs -nw'
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin
+export PATH=~/.local/bin:$PATH:/opt/local/bin:/opt/local/sbin
 export PS1='\[\e[1;33m\]\u@\h:\w\n$ \[\e[0;0m\]'
 export UUIDRE="\w{8}(-\w{4}){3}-\w{12}"
