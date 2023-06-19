@@ -8,6 +8,29 @@ source $DIR/dot_functions
 # environment variables
 export ACK_OPTIONS="--smart-case"
 export EDITOR='emacs -nw'
-export PATH=~/.local/bin:$PATH:/opt/local/bin:/opt/local/sbin
+export PATH="~/.local/bin:/opt/local/bin:/opt/local/sbin:${PATH}"
 export PS1='\[\e[1;33m\]\u@\h:\w\n$ \[\e[0;0m\]'
 export UUIDRE="\w{8}(-\w{4}){3}-\w{12}"
+
+### ruby
+export PATH="/home/cesar/.rbenv/shims:~/.local/share/gem/ruby/3.0.0/bin:${PATH}"
+export RBENV_SHELL=bash
+
+source '/usr/lib/rbenv/libexec/../completions/rbenv.bash'
+
+command rbenv rehash 2>/dev/null
+
+rbenv() {
+  local command
+  command="${1:-}"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  rehash|shell)
+    eval "$(rbenv "sh-$command" "$@")";;
+  *)
+    command rbenv "$command" "$@";;
+  esac
+}
