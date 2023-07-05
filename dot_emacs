@@ -4,13 +4,17 @@
 ;;; as it expects emacs 25.1+ with prelude being loaded via
 ;;; .emacs.d/init.el. Learn more at https://github.com/bbatsov/prelude
 
-;;; Code:
-
 ;; load prelude
-;; (package-initialize)
 (load "~/.emacs.d/init.el")
+;; use-package for convenient lazy-loading and installing packages used here
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 ;; theme
-(load-theme 'monokai t)
+(use-package monokai-theme
+  :ensure t
+  :config
+  (load-theme 'monokai t))
 ;; variables
 (setq-default cursor-type 'bar)
 (setq prelude-flyspell nil)
@@ -31,15 +35,17 @@
               (toggle-truncate-lines 1)
               (local-set-key "C-;" 'semantic-ia-complete-symbol))))
 ;; elpy-mode for .py files
-(require 'elpy)
-(elpy-enable)
-(add-hook 'python-mode-hook
-          (lambda ()
-            (elpy-mode)
-            (setq elpy-rpc-python-command "python3")
-            (flycheck-mode)
-            (setq flycheck-flake8-maximum-line-length 99)
-            (flymake-mode-off)))
+(use-package elpy
+    :ensure t
+    :config
+    (elpy-enable)
+    (add-hook 'python-mode-hook
+              (lambda ()
+                (elpy-mode)
+                (setq elpy-rpc-python-command "python3")
+                (flycheck-mode)
+                (setq flycheck-flake8-maximum-line-length 99)
+                (flymake-mode-off))))
 ;; built-in modes
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -53,6 +59,22 @@
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+;; better search
+(use-package swiper
+    :ensure t
+    :bind (("C-s" . swiper)))
 ;; better M-x completion
-(global-set-key (kbd "M-x") 'smex)
+(use-package smex
+  :ensure t
+  :bind
+  (("M-x" . smex)
+   ("M-X" . smex-major-mode-commands))
+  :config
+  (smex-initialize))
+;; helm for auto completion
+(use-package helm
+    :ensure t
+    :config
+    (helm-mode 1)
+    (setq projectile-completion-system 'helm))
 ;;; dot_emacs ends here
