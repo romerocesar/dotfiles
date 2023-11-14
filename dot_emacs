@@ -9,7 +9,11 @@
 ;; use-package for convenient lazy-loading and installing packages used here
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (package-install 'use-package))
+  (package-install 'use-package)
+  (package-install 'quelpa-use-package))
+(require 'quelpa-use-package)
+(setq quelpa-use-package-inhibit-loading-quelpa t)
+(quelpa-use-package-activate-advice)
 ;; theme
 (use-package monokai-theme
   :ensure t
@@ -23,17 +27,19 @@
 (set-default 'truncate-lines t)
 (setq truncate-partial-width-windows nil)
 (setq whitespace-line-column 99)
-(setq whitespace-global-modes t)        ; automatically enable ws mode
+(setq whitespace-global-modes t)
 ;; modes
-;; malabar mode for Java. See https://github.com/m0smith/malabar-mode
-(when (require 'malabar-mode nil 'noerror)
-  (add-to-list 'auto-mode-alist '("\\.java\\'" . malabar-mode))
-  (setq malabar-mode-key-prefix (kbd "C-c C-j"))
-  ;; truncate lines and add semantic code completion on '.' for malabar mode
-  (add-hook 'malabar-mode-hook
-            (lambda ()
-              (toggle-truncate-lines 1)
-              (local-set-key "C-;" 'semantic-ia-complete-symbol))))
+;; copilot
+(use-package copilot
+  :ensure t
+  :quelpa (copilot :fetcher github
+                   :repo "zerolfx/copilot.el"
+                   :branch "main"
+                   :files ("dist" "*.el"))
+  :config
+  (add-hook 'prog-mode-hook 'copilot-mode)
+  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
 ;; elpy-mode for .py files
 (use-package elpy
     :ensure t
@@ -43,9 +49,9 @@
               (lambda ()
                 (elpy-mode)
                 (setq elpy-rpc-python-command "python3")
-                (flycheck-mode)
-                (setq flycheck-flake8-maximum-line-length 99)
-                (flymake-mode-off))))
+                (flycheck-mode -1)
+                (setq flycheck-flake8-maximum-line-length 120)
+                (flymake-mode 1))))
 ;; built-in modes
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
@@ -54,11 +60,6 @@
 (windmove-default-keybindings)
 (when (require 'switch-window nil 'noerror)
   (global-set-key (kbd "C-x o") 'switch-window))
-;; resizing windows
-(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "S-C-<down>") 'shrink-window)
-(global-set-key (kbd "S-C-<up>") 'enlarge-window)
 ;; better search
 (use-package swiper
     :ensure t
