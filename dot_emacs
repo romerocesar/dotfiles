@@ -1,7 +1,7 @@
 ;;; dot_emacs --- minimal
 ;;;
 ;;; This is my default .emacs file that sets up very little on its own
-;;; as it expects emacs 25.1+ with prelude being loaded via
+;;; as it expects emacs 27+ with prelude being loaded via
 ;;; .emacs.d/init.el. Learn more at https://github.com/bbatsov/prelude
 
 ;; load prelude
@@ -22,7 +22,6 @@
 ;; variables
 (setq-default cursor-type 'bar)
 (setq prelude-flyspell nil)
-(setq projectile-completion-system 'grizzl)
 (setq projectile-enable-caching t)
 (set-default 'truncate-lines t)
 (setq truncate-partial-width-windows nil)
@@ -37,6 +36,8 @@
                    :branch "main"
                    :files ("dist" "*.el"))
   :config
+  (load "~/.emacs.d/quelpa/build/copilot/copilot-balancer.el")
+  (load "~/.emacs.d/quelpa/build/copilot/copilot.el")
   (add-hook 'prog-mode-hook 'copilot-mode)
   (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
   (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
@@ -58,8 +59,13 @@
 ;; key bindings
 ;; buffers
 (windmove-default-keybindings)
-(when (require 'switch-window nil 'noerror)
-  (global-set-key (kbd "C-x o") 'switch-window))
+(use-package switch-window
+  :ensure t
+  :bind
+  (("C-x o" . switch-window))
+  :config
+  (setq switch-window-shortcut-style 'qwerty)
+  (setq switch-window-timeout nil))
 ;; better search
 (use-package swiper
     :ensure t
