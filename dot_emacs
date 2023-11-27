@@ -6,7 +6,19 @@
 
 ;; load prelude
 (load "~/.emacs.d/init.el")
-;; use-package for convenient lazy-loading and installing packages used here
+;; variables
+(setq-default cursor-type 'bar)
+(setq prelude-flyspell nil)
+(setq projectile-enable-caching t)
+(set-default 'truncate-lines t)
+(setq truncate-partial-width-windows nil)
+(setq whitespace-line-column 99)
+(setq whitespace-global-modes t)
+;; built-in modes
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(menu-bar-mode 0)
+;; use-package for convenient lazy-loading and installing packages
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package)
@@ -19,15 +31,7 @@
   :ensure t
   :config
   (load-theme 'monokai t))
-;; variables
-(setq-default cursor-type 'bar)
-(setq prelude-flyspell nil)
-(setq projectile-enable-caching t)
-(set-default 'truncate-lines t)
-(setq truncate-partial-width-windows nil)
-(setq whitespace-line-column 99)
-(setq whitespace-global-modes t)
-;; modes
+;; 3p modes
 ;; copilot
 (use-package copilot
   :ensure t
@@ -53,12 +57,7 @@
                 (flycheck-mode -1)
                 (setq flycheck-flake8-maximum-line-length 120)
                 (flymake-mode 1))))
-;; built-in modes
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
-;; key bindings
-;; buffers
-(windmove-default-keybindings)
+;; switch-window
 (use-package switch-window
   :ensure t
   :bind
