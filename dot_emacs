@@ -18,6 +18,8 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (menu-bar-mode 0)
+(add-to-list 'auto-mode-alist '("\\.xml\\'" . nxml-mode))
+(add-to-list 'auto-mode-alist '("\\.csproj\\'" . nxml-mode))
 ;; use-package for convenient lazy-loading and installing packages
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -54,6 +56,7 @@
               (lambda ()
                 (elpy-mode)
                 (setq elpy-rpc-python-command "python3")
+                (setq elpy-rpc-virtualenv-path "~/.emacs.d/elpy/venv")
                 (flycheck-mode -1)
                 (setq flycheck-flake8-maximum-line-length 120)
                 (flymake-mode 1))))
