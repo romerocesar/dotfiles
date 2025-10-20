@@ -17,7 +17,7 @@ font pango:monospace 8
 exec --no-startup-id dex --autostart --environment i3
 
 # clipmenu is a clipboard manager that uses dmenu to select what to paste.
-exec --no-startup-id clipmenud
+exec --no-startup-id env CM_SELECIONS=clipboard,primary clipmenud
 bindsym $mod+v exec --no-startup-id clipmenu
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
@@ -29,6 +29,7 @@ bindsym $mod+Shift+o exec --no-startup-id i3lock -c 111111 --nofork
 exec --no-startup-id nm-applet
 
 # set cursor theme
+exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id xsetroot -cursor_name breeze
 
 # start pulseaudio

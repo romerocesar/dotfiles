@@ -5,7 +5,7 @@
 ;;; .emacs.d/init.el. Learn more at https://github.com/bbatsov/prelude
 
 ;; load prelude
-(load "~/.emacs.d/init.el")
+(load "~/src/prelude/init.el")
 ;; variables
 (setq-default cursor-type 'bar)
 (setq prelude-flyspell nil)
@@ -24,6 +24,9 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package)
+  (package-install 'quelpa-use-package))
+(unless (package-installed-p 'quelpa-use-package)
+  (package-refresh-contents)
   (package-install 'quelpa-use-package))
 (require 'quelpa-use-package)
 (setq quelpa-use-package-inhibit-loading-quelpa t)

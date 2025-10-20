@@ -16,8 +16,6 @@ export UUIDRE="\w{8}(-\w{4}){3}-\w{12}"
 export PATH="/home/cesar/.rbenv/shims:~/.local/share/gem/ruby/3.0.0/bin:${PATH}"
 export RBENV_SHELL=bash
 
-source '/usr/lib/rbenv/libexec/../completions/rbenv.bash'
-
 command rbenv rehash 2>/dev/null
 
 rbenv() {
