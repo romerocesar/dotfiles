@@ -8,12 +8,21 @@ source $DIR/dot_functions
 # environment variables
 export ACK_OPTIONS="--smart-case"
 export EDITOR='emacs -nw'
-export PATH="~/.local/bin:/opt/local/bin:/opt/local/sbin:${PATH}"
 export PS1='\[\e[1;33m\]\u@\h:\w\n$ \[\e[0;0m\]'
 export UUIDRE="\w{8}(-\w{4}){3}-\w{12}"
 
-### ruby
-export PATH="/home/cesar/.rbenv/shims:~/.local/share/gem/ruby/3.0.0/bin:${PATH}"
+# PATH
+export PATH=$(getconf PATH)
+export PATH="~/.local/bin:/usr/local/bin:${PATH}"
+
+## npm
+[ -d "$(npm prefix -g 2>/dev/null)/bin" ] && export PATH="$PATH:$(npm prefix -g)/bin"
+
+## ruby
+RBSHIMS=/home/cesar/.rbenv/shims
+[ -d $RBSHIMS ] && export PATH="$PATH:$RBSHIMS"
+RBGEMS="~/.local/share/gem/ruby/3.0.0/bin"
+[ -d $RBGEMS ] && export PATH="$PATH:$RBGEMS"
 export RBENV_SHELL=bash
 
 command rbenv rehash 2>/dev/null
