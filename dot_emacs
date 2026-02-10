@@ -37,32 +37,6 @@
   :config
   (load-theme 'monokai t))
 ;; 3p modes
-;; copilot
-(use-package copilot
-  :ensure t
-  :quelpa (copilot :fetcher github
-                   :repo "zerolfx/copilot.el"
-                   :branch "main"
-                   :files ("dist" "*.el"))
-  :config
-  (load "~/.emacs.d/quelpa/build/copilot/copilot-balancer.el")
-  (load "~/.emacs.d/quelpa/build/copilot/copilot.el")
-  (add-hook 'prog-mode-hook 'copilot-mode)
-  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
-;; elpy-mode for .py files
-(use-package elpy
-    :ensure t
-    :config
-    (elpy-enable)
-    (add-hook 'python-mode-hook
-              (lambda ()
-                (elpy-mode)
-                (setq elpy-rpc-python-command "python3")
-                (setq elpy-rpc-virtualenv-path "~/.emacs.d/elpy/venv")
-                (flycheck-mode -1)
-                (setq flycheck-flake8-maximum-line-length 120)
-                (flymake-mode 1))))
 ;; switch-window
 (use-package switch-window
   :ensure t
